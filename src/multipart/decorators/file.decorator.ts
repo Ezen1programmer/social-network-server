@@ -1,4 +1,4 @@
-import { PayloadTooLargeException, createParamDecorator, ExecutionContext } from '@nestjs/common';
+import { createParamDecorator, ExecutionContext, PayloadTooLargeException } from '@nestjs/common';
 import { Multipart } from 'fastify-multipart';
 import { FastifyRequest } from 'fastify';
 import { BusboyConfig } from 'busboy';
@@ -17,6 +17,8 @@ export const FileDecorator = createParamDecorator(
     ctx: ExecutionContext,
   ): Promise<Multipart> => {
     const request = ctx.switchToHttp().getRequest<FastifyRequest>();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
     return request.file(options).catch(() => {
       throw new PayloadTooLargeException(ErrorTypeEnum.FILE_TOO_LARGE);
     });

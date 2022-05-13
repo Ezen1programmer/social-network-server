@@ -22,6 +22,8 @@ import { SendGridModule } from 'src/sendgrid';
     PassportModule,
     JwtModule.register({}),
     CacheModule.registerAsync({
+      //   eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       useFactory: async (configService: ConfigService) =>
         Object.assign(
           {

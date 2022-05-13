@@ -1,10 +1,10 @@
 import { AuthGuard } from '@nestjs/passport';
 import { Reflector } from '@nestjs/core';
 import {
-  UnauthorizedException,
-  ForbiddenException,
   ExecutionContext,
+  ForbiddenException,
   Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 
 import { ErrorTypeEnum } from 'src/common/enums';
@@ -27,7 +27,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   /**
    * [description]
-   * @param err
+   * @param _err
    * @param user
    * @param info
    * @param ctx

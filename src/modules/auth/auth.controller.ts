@@ -1,14 +1,14 @@
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import {
-  Get,
-  Post,
   Body,
-  Query,
-  Patch,
-  UseGuards,
-  Controller,
-  UseInterceptors,
   ClassSerializerInterceptor,
+  Controller,
+  Get,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { User } from 'src/common/decorators';
@@ -17,20 +17,20 @@ import { UserEntity } from '../users/entities';
 import { UserRefreshTokensService, UsersService } from '../users/services';
 
 import {
-  JwtTokensDto,
-  CredentialsDto,
-  UpdateEmailDto,
-  CreateProfileDto,
-  SelectProfileDto,
-  ResetPasswordDto,
-  UpdateProfileDto,
-  UpdatePasswordDto,
-  JwtRefreshTokenDto,
-  SendResetPasswordDto,
   ConfirmationEmailDto,
+  CreateProfileDto,
+  CredentialsDto,
+  JwtRefreshTokenDto,
+  JwtTokensDto,
+  ResetPasswordDto,
+  SelectProfileDto,
+  SendResetPasswordDto,
+  UpdateEmailDto,
+  UpdatePasswordDto,
+  UpdateProfileDto,
 } from './dto';
 import { AuthService } from './auth.service';
-import { JwtRefreshGuard, JwtAuthGuard } from './guards';
+import { JwtAuthGuard, JwtRefreshGuard } from './guards';
 
 /**
  * [description]
@@ -41,6 +41,7 @@ import { JwtRefreshGuard, JwtAuthGuard } from './guards';
 export class AuthController {
   /**
    * [description]
+   * @param userRefreshTokensService
    * @param usersService
    * @param authService
    */
@@ -70,7 +71,7 @@ export class AuthController {
 
   /**
    * [description]
-   * @param data
+   * @param user
    */
   @Post('log-out')
   @UseGuards(JwtRefreshGuard)
