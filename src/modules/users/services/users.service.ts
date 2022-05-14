@@ -142,7 +142,6 @@ export class UsersService {
   /**
    * [description]
    * @param conditions
-   * @param options
    */
   public async deleteOne(conditions: FindOptionsWhere<UserEntity>): Promise<UserEntity> {
     return this.userEntityRepository.manager.transaction(async (transactionalEntityManager) => {
